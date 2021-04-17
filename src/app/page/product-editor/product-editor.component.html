@@ -1,0 +1,47 @@
+
+<!-- editor update -->
+<div class="container">
+  <div class="row">
+    <!-- editor                         -->
+    <div *ngIf="product$ | async as product" class="col-6 offset-3">
+      <h2>Update Product</h2>
+      <!-- editor             --> <!-- save button  update              -->
+      <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm, product)">
+        <div class="form-group">
+          <label for=""></label>
+                 <!-- editor          -->
+          <input [(ngModel)]="product.id"
+            type="hidden"
+            class="form-control" name="id">
+        </div>
+        <div class="form-group">
+          <label for="">Name</label>
+                 <!-- editor          -->
+          <input [(ngModel)]="product.name"
+            type="text"
+            class="form-control" name="name">
+        </div>
+        <div class="form-group">
+          <label for="">Price</label>
+                 <!-- editor          -->
+          <input [(ngModel)]="product.price"
+            type="text"
+            class="form-control" name="price">
+        </div>
+        <div class="form-group">
+          <label for="">Category</label>
+                 <!-- editor          -->
+          <input [(ngModel)]="product.category"
+            type="text"
+            class="form-control" name="category">
+        </div>
+        <div class="form-group">
+          <!-- save button  update -->
+          <button  type="submit" class="btn btn-primary btn-block mt-5">
+            <i class="fa fa-save"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

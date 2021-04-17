@@ -1,0 +1,72 @@
+<!-- create new product -->
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h2 class="">Create New Product</h2>
+      <form #productForm="ngForm" class="" (ngSubmit)="onCreate(newProduct)">
+        <div class="form-group">
+          <label for="">Name</label>
+          <input [(ngModel)]="newProduct.name" type="text"
+            class="form-control" name="name">
+        </div>
+        <div class="form-group">
+          <label for="">Price</label>
+          <input [(ngModel)]="newProduct.price" type="text"
+            class="form-control" name="price">
+        </div>
+        <div class="form-group">
+          <label for="">Category</label>
+          <input [(ngModel)]="newProduct.category" type="text"
+            class="form-control" name="category">
+        </div>
+        <div class="form-group">
+          <!-- save button  update -->
+          <button  type="submit" class="btn btn-primary btn-block mt-1">
+            <i class="fa fa-save"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- table product list -->
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <h2>Product List</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody> <!-- table                            -->
+          <tr *ngFor="let product of productList$ | async">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.category }}</td>
+            <td>
+              <div class="btn-group">
+                   <!-- editor update -->
+                  <button [routerLink]="['product/' + product.id]" class="btn btn-info">
+                    <i class="fa fa-pencil"></i>
+                  </button>
+                  <!-- delete -->
+                        <!-- delete click      -->
+                  <button (click)="onDelete(product)"  class="btn btn-danger">
+                    <i class="fa fa-trash"></i>
+                  </button>
+              </div>
+            <td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
